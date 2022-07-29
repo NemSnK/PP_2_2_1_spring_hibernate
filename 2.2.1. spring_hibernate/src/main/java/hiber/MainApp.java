@@ -30,12 +30,12 @@ public class MainApp {
         car3.setUser(user3);
         car4.setUser(user4);
 
-        userService.add(user1);
-        userService.add(user2);
-        userService.add(user3);
-        userService.add(user4);
+        userService.addUser(user1);
+        userService.addUser(user2);
+        userService.addUser(user3);
+        userService.addUser(user4);
 
-        userService.listUsers().stream().map(User::toString).forEach(System.out::println);
+        userService.getListUsers().stream().map(User::toString).forEach(System.out::println);
 
         User user = userService.getUserByCar("model", 4);
         System.out.println(user.toString());

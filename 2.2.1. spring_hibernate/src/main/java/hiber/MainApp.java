@@ -7,7 +7,7 @@ import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
-import java.util.List;
+
 
 public class MainApp {
     public static void main(String[] args) throws SQLException {
@@ -15,7 +15,6 @@ public class MainApp {
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         UserService userService = context.getBean(UserService.class);
-
         Car car1 = new Car("model", 1);
         Car car2 = new Car("model", 2);
         Car car3 = new Car("model", 3);
@@ -38,7 +37,7 @@ public class MainApp {
 
         userService.listUsers().stream().map(User::toString).forEach(System.out::println);
 
-        User user = userService.getUserFromCar("model", 4);
+        User user = userService.getUserByCar("model", 4);
         System.out.println(user.toString());
         context.close();
     }

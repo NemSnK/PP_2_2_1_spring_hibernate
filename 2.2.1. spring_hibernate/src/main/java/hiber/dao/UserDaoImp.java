@@ -1,7 +1,6 @@
 package hiber.dao;
 
 import hiber.model.User;
-import hiber.model.Car;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,9 +11,10 @@ import java.util.List;
 
 @Repository
 public class UserDaoImp implements UserDao {
+    private SessionFactory sessionFactory;
 
     @Autowired
-    private SessionFactory sessionFactory;
+    public void setUserDao(SessionFactory sessionFactory) { this.sessionFactory = sessionFactory; }
 
     @Override
     public void add(User user) {
@@ -30,7 +30,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public User getUserFromCar(String model, int series) {
+    public User getUserByCar(String model, int series) {
         Query query = sessionFactory.getCurrentSession().createQuery("select user from Car car where" +
                 " car.model =: model  and car.series =: series");
         query.setParameter("model", model);

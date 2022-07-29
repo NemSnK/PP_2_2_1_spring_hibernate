@@ -8,5 +8,5 @@ public interface UserService {
 
     List<User> listUsers();
 
-    User getUserFromCar(String model, int series);
+    User getUserByCar(String model, int series);
 }
